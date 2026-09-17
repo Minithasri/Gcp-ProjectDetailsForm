@@ -1,0 +1,123 @@
+{
+  "name": "Project",
+  "version": "0.0.1",
+  "size": {
+    "width": 3,
+    "height": 3
+  },
+  "mapping": [],
+  "collections": [{ "name": "ProjectDetails", "type": "STRING" }],
+  "workflowMapping": [],
+  "packagesMapping": [
+    {
+      "name": "DOMO Notifications",
+      "alias": "project",
+      "packageId": "03ba6971-98d0-4654-9bfd-aa897816df33",
+      "parameters": [
+        {
+          "name": "recipientEmails",
+          "displayName": "recipientEmails",
+          "type": "text",
+          "value": null,
+          "nullable": true,
+          "isList": false,
+          "children": [],
+          "entitySubType": null,
+          "alias": "recipientEmails"
+        },
+        {
+          "name": "subject",
+          "displayName": "subject",
+          "type": "text",
+          "value": null,
+          "nullable": true,
+          "isList": false,
+          "children": [],
+          "entitySubType": null,
+          "alias": "subject"
+        },
+        {
+          "name": "body",
+          "displayName": "body",
+          "type": "text",
+          "value": null,
+          "nullable": true,
+          "isList": false,
+          "children": [],
+          "entitySubType": null,
+          "alias": "body"
+        },
+        {
+          "name": "personRecipients",
+          "displayName": "personRecipients",
+          "type": "person",
+          "value": null,
+          "nullable": true,
+          "isList": true,
+          "children": [],
+          "entitySubType": null,
+          "alias": "personRecipients"
+        },
+        {
+          "name": "groupRecipients",
+          "displayName": "groupRecipients",
+          "type": "group",
+          "value": null,
+          "nullable": true,
+          "isList": true,
+          "children": [],
+          "entitySubType": null,
+          "alias": "groupRecipients"
+        },
+        {
+          "name": "attachments",
+          "displayName": "attachments",
+          "type": "number",
+          "value": null,
+          "nullable": true,
+          "isList": true,
+          "children": [],
+          "entitySubType": null,
+          "alias": "attachments"
+        },
+        {
+          "name": "attachment",
+          "displayName": "attachment",
+          "type": "number",
+          "value": null,
+          "nullable": true,
+          "isList": false,
+          "children": [],
+          "entitySubType": null,
+          "alias": "attachment"
+        },
+        {
+          "name": "includeReplyAll",
+          "displayName": "includeReplyAll",
+          "type": "boolean",
+          "value": null,
+          "nullable": true,
+          "isList": false,
+          "children": [],
+          "entitySubType": null,
+          "alias": "includeReplyAll"
+        }
+      ],
+      "output": {
+        "name": "isSent",
+        "displayName": "isSent",
+        "type": "boolean",
+        "value": null,
+        "nullable": true,
+        "isList": false,
+        "children": [],
+        "entitySubType": null,
+        "alias": "isSent"
+      },
+      "version": "2.1.16",
+      "functionName": "sendEmail"
+    }
+  ],
+  "id": "d91e2fd3-dfb5-4347-9886-3923ec87937c",
+  "proxyId": "49f8d41e-b958-4d88-b8dc-1e144e5c25f1"
+}

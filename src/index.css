@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  /* Google Cloud Platform brand palette */
+  --color-gcp-blue: #4285F4;
+  --color-gcp-blue-dark: #1A73E8;
+  --color-gcp-red: #EA4335;
+  --color-gcp-yellow: #FBBC04;
+  --color-gcp-green: #34A853;
+}
