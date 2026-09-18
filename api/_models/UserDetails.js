@@ -10,6 +10,14 @@ const userDetailsSchema = new mongoose.Schema(
     endDate: { type: Date, required: true },
     cicd: { type: String, enum: ["Yes", "No"], required: true },
     ownerName: { type: String, required: true, trim: true },
+    // Added to the CC list of every mail for this request
+    ownerEmail: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid owner email"],
+    },
     ram: { type: String, required: true, trim: true },
     storage: { type: String, required: true, trim: true },
     subdomainRequired: { type: String, enum: ["Yes", "No"], required: true },

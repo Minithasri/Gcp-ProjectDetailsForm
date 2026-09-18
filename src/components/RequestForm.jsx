@@ -16,6 +16,7 @@ import {
   CalendarCheck,
   GitBranch,
   UserCog,
+  Mail,
   Cpu,
   HardDrive,
   Globe,
@@ -59,6 +60,7 @@ const initialFormData = {
   endDate: "",
   cicd: "",
   ownerName: "",
+  ownerEmail: "",
   ram: "",
   storage: "",
   subdomainRequired: "",
@@ -323,6 +325,27 @@ export const RequestForm = () => {
                   required
                   className={inputClass}
                 />
+              </div>
+
+              <div>
+                <label className={labelClass}>
+                  <span className={`${iconWrapClass} bg-gcp-blue/10`}>
+                    <Mail className="w-3.5 h-3.5 text-gcp-blue" />
+                  </span>
+                  Owner Email {required}
+                </label>
+                <input
+                  type="email"
+                  name="ownerEmail"
+                  value={formData.ownerEmail}
+                  onChange={handleChange}
+                  placeholder="owner@gwcdata.ai"
+                  required
+                  className={inputClass}
+                />
+                <p className="text-xs text-gray-500 mt-1.5">
+                  This address is added to the CC list of the request mail.
+                </p>
               </div>
             </div>
 

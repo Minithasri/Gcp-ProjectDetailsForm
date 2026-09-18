@@ -39,12 +39,11 @@ const transporter = nodemailer.createTransport({
 
 // From = the user who submitted the form, To = fixed receiver
 const TO_EMAIL = process.env.RECEIVER_EMAIL || "dhanushya.r@gwcdata.ai";
+// Fixed CC list; the owner email entered on the form is added to it per request
 const CC_EMAILS = [
-  "minithasri.k@gwcdata.ai",
-  "aharsha.vhardhan@gwcdata.ai",
-  "kaviya.priya@gwcdata.ai",
-  "vishwanath.a@gwcdata.ai",
-  "naraginti.chandu@gwcdata.ai",
+  "naveen.kumar@gwcdata.ai",
+  "santhosh.kumar@gwcdata.ai",
+  "subash.ramu@gwcdata.ai",
 ];
 
 async function sendEmailViaGraph(fromEmail, subject, emailBody, to, cc) {
@@ -201,6 +200,7 @@ function buildUserDetailsEmail(details, { approveUrl } = {}) {
             ${row("End Date", formatDate(details.endDate))}
             ${row("CI/CD Required", details.cicd)}
             ${row("Owner (Project / POC Manager)", details.ownerName)}
+            ${row("Owner Email", details.ownerEmail)}
             ${row("RAM", details.ram)}
             ${row("Storage", details.storage)}
             ${row("Subdomain Needed", subdomain)}
@@ -313,6 +313,7 @@ app.post("/api/requests", async (req, res) => {
       endDate,
       cicd,
       ownerName,
+      ownerEmail,
       ram,
       storage,
       subdomainRequired,
@@ -337,6 +338,7 @@ app.post("/api/requests", async (req, res) => {
       endDate,
       cicd,
       ownerName,
+      ownerEmail,
       ram,
       storage,
       subdomainRequired,
@@ -358,6 +360,7 @@ app.post("/api/requests", async (req, res) => {
           fromEmail,
           `New GCP Project Request: ${projectName || "Unknown"}`,
           buildUserDetailsEmail(saved, { approveUrl }),
+          { cc: [...CC_EMAILS, saved.ownerEmail] },
         );
         emailSent = true;
       } catch (emailError) {
@@ -509,7 +512,7 @@ app.post("/api/requests/:id/approve", async (req, res) => {
         buildUserDetailsEmail(approved),
         {
           to: approved.userEmail || TO_EMAIL,
-          cc: [TO_EMAIL, ...CC_EMAILS],
+          cc: [TO_EMAIL, ...CC_EMAILS, approved.ownerEmail],
         },
       );
     } catch (emailError) {
